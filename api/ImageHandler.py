@@ -1,12 +1,12 @@
-from flask_restful import Api, Resource, reqparse
+# from flask_restful import Api, Resource, reqparse
 
+# class ImageHandler(Resource):
+#   def get(self):
+#     return {
+#       'resultStatus': './frontend/src/data/output.jpg',
+#       'message': "./frontend/src/data/output.jpg"
+#       }
 
-class HelloApiHandler(Resource):
-  def get(self):
-    return {
-      'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
-      }
 
   # def post(self):
   #   print(self)
