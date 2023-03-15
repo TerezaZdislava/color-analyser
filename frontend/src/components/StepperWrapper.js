@@ -31,6 +31,13 @@ function StepperWrapper({ step }) {
       >
         <div className="step-counter">4</div>
       </div>
+      <div
+        className={`${'stepper-item'} ${step > 5 ? 'completed' : ''} ${
+          step === 5 ? 'active' : ''
+        }`}
+      >
+        <div className="step-counter">5</div>
+      </div>
     </div>
   );
 }

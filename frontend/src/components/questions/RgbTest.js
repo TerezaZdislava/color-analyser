@@ -26,17 +26,17 @@ function RgbTest({ errors, formData, setFormData, img }) {
         onChange={rgbTestChange}
       >
         <FormControlLabel
-          value={'blue'}
+          value={'cool'}
           control={<Radio color="secondary" />}
           label={'Blue'}
         />
         <FormControlLabel
-          value={'red'}
+          value={'medium'}
           control={<Radio color="secondary" />}
           label={'Red'}
         />
         <FormControlLabel
-          value={'yellow'}
+          value={'warm'}
           control={<Radio color="secondary" />}
           label={'Yellow'}
         />

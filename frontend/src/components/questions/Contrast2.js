@@ -2,17 +2,18 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-function Contrast({ errors, formData, setFormData, img, colors }) {
+function Contrast2({ errors, formData, setFormData, img, colors }) {
   const contrastChange = (event) => {
     setFormData({
       ...formData,
-      contrast: event.target.value,
+      contrast2: event.target.value,
     });
   };
   return (
     <form className="question">
       {errors && <span className="error">Required *</span>}
       <h3>
+        {' '}
         Bright or muted, which color makes your features look more glowing and
         healthy?
       </h3>
@@ -20,15 +21,15 @@ function Contrast({ errors, formData, setFormData, img, colors }) {
         <img
           src={img}
           alt={img}
-          style={{ backgroundColor: colors.bright[0] }}
+          style={{ backgroundColor: colors.bright[1] }}
         />
-        <img src={img} alt={img} style={{ backgroundColor: colors.muted[0] }} />
+        <img src={img} alt={img} style={{ backgroundColor: colors.muted[1] }} />
       </div>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         name="radio-buttons-group"
-        defaultValue={formData.contrast}
-        value={formData.contrast}
+        defaultValue={formData.contrast2}
+        value={formData.contrast2}
         onChange={contrastChange}
       >
         <FormControlLabel
@@ -46,4 +47,4 @@ function Contrast({ errors, formData, setFormData, img, colors }) {
   );
 }
 
-export default Contrast;
+export default Contrast2;

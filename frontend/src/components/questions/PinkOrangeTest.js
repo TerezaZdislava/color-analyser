@@ -25,12 +25,12 @@ function PinkOrangeTest({ errors, formData, setFormData, img }) {
         onChange={pinkOrangeTest}
       >
         <FormControlLabel
-          value={'pink'}
+          value={'cool'}
           control={<Radio color="secondary" />}
           label={'Pink'}
         />
         <FormControlLabel
-          value={'orange'}
+          value={'warm'}
           control={<Radio color="secondary" />}
           label={'Orange'}
         />

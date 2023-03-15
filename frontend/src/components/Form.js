@@ -2,8 +2,9 @@ import { useState } from 'react';
 import StepperWrapper from './StepperWrapper';
 import PinkOrangeTest from './questions/PinkOrangeTest';
 import MetalTest from './questions/MetalTest';
-import RgbTest from './questions/RgbTest';
 import Contrast from './questions/Contrast';
+import Contrast2 from './questions/Contrast2';
+import Features from './questions/Features';
 import '../styles/form.scss';
 
 export const DefaultFormDataInt = {
@@ -11,8 +12,10 @@ export const DefaultFormDataInt = {
   // contrastTest
   pinkOrangeTest: '',
   metalTest: '',
-  rgbTest: '',
-  contrast: '',
+  // rgbTest: '',
+  contrast: null,
+  contrast2: null,
+  featuresContrast: '',
   // pokud studeny typ
   //--- podle vysledku svetle ruzova x fuchsia
   //--- cerna x seda sick/wash out
@@ -21,6 +24,15 @@ export const DefaultFormDataInt = {
   // --nude pink x nude brown
 };
 
+// SPRING
+// warm + light  →  bright
+// ‍SUMMER
+// cool + light  →  muted
+// AUTUMN
+// warm + dark  →  muted‍
+// WINTER
+// cool + dark  →  bright
+
 function Form({ img }) {
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState(false);
@@ -28,6 +40,19 @@ function Form({ img }) {
   const [contrast, setContrast] = useState('');
   const [croma, setCroma] = useState('');
   const [formData, setFormData] = useState(DefaultFormDataInt);
+
+  function colors() {
+    if (formData.pinkOrangeTest === 'cool' && formData.metalTest === 'cool') {
+      return {
+        muted: ['#f8bbd0', 'darkgrey'],
+        bright: ['#d81b60', 'black'],
+      };
+    } else
+      return {
+        muted: ['brown', 'darkolivegreen'],
+        bright: ['coral', 'limegreen'],
+      };
+  }
 
   function validate() {
     switch (step) {
@@ -42,15 +67,21 @@ function Form({ img }) {
         }
         return false;
       case 3:
-        if (formData.rgbTest !== '') {
+        if (formData.featuresContrast !== '') {
           return true;
         }
         return false;
       case 4:
-        if (formData.contrast !== '') {
+        if (formData.contrast !== null) {
           return true;
         }
         return false;
+      case 5:
+        if (formData.contrast2 !== null) {
+          return true;
+        }
+        return false;
+
       default:
         return false;
     }
@@ -78,7 +109,7 @@ function Form({ img }) {
         );
       case 3:
         return (
-          <RgbTest
+          <Features
             errors={errors}
             formData={formData}
             setFormData={setFormData}
@@ -92,6 +123,17 @@ function Form({ img }) {
             formData={formData}
             setFormData={setFormData}
             img={img}
+            colors={colors()}
+          />
+        );
+      case 5:
+        return (
+          <Contrast2
+            errors={errors}
+            formData={formData}
+            setFormData={setFormData}
+            img={img}
+            colors={colors()}
           />
         );
       default:
@@ -106,7 +148,7 @@ function Form({ img }) {
     } else {
       setErrors(true);
     }
-    if (step === 2) {
+    if (step === 4) {
       console.log(formData);
     }
   }
@@ -127,7 +169,7 @@ function Form({ img }) {
           </button>
         )}
         <button className="button-primary" onClick={handleSubmit}>
-          {step < 4 ? 'Next' : 'Submit'}
+          {step < 5 ? 'Next' : 'Submit'}
         </button>
       </div>
     </div>

@@ -25,12 +25,12 @@ function MetalTest({ errors, formData, setFormData, img }) {
         onChange={metalTestChange}
       >
         <FormControlLabel
-          value={'gold'}
+          value={'warm'}
           control={<Radio color="secondary" />}
           label={'Gold'}
         />
         <FormControlLabel
-          value={'silver'}
+          value={'cool'}
           control={<Radio color="secondary" />}
           label={'Silver'}
         />

@@ -13,7 +13,7 @@ function App() {
 
   function handleImgChange(e) {
     setImgUrl(e);
-    console.log(e);
+    // console.log(e);
     navigate('/form');
   }
 
