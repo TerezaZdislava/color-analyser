@@ -1,38 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+// // import logo from './logo.svg';
+import './App.scss';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Home from './components/Home';
+import Form from './components/Form';
+import Result from './components/Result';
 
 function App() {
-  const [getMessage, setGetMessage] = useState({})
+  const navigate = useNavigate();
+  const [imgUrl, setImgUrl] = useState('');
+  const [season, setSeason] = useState('');
 
-  useEffect(()=>{
-    axios.get('https://react-flask-tutorial.herokuapp.com/flask/hello').then(response => {
-      console.log("SUCCESS", response)
-      setGetMessage(response)
-    }).catch(error => {
-      console.log(error)
-    })
+  function handleImgChange(e) {
+    setImgUrl(e);
+    console.log(e);
+    navigate('/form');
+  }
 
-    // axios.get('http://localhost:5000/flask/hello').then(response => {
-    //   console.log("SUCCESS", response)
-    //   setGetMessage(response)
-    // }).catch(error => {
-    //   console.log(error)
-    // })
+  function handleSeasonChange(e) {
+    setSeason(e);
+    console.log(e);
+    navigate('/form');
+  }
 
-  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>React + Flask Tutorial</p>
-        <div>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
-          :
-          <h3>LOADING</h3>}</div>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Home
+            sendformToParent={(e) => {
+              handleImgChange(e);
+            }}
+          />
+        }
+      />
+      <Route path="/result" element={<Result img={imgUrl} season={season} />} />
+      <Route
+        path="/form"
+        element={
+          <Form
+            img={imgUrl}
+            sendSeason={(e) => {
+              handleSeasonChange(e);
+            }}
+          />
+        }
+      />
+    </Routes>
   );
 }
 

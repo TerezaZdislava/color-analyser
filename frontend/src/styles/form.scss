@@ -1,0 +1,40 @@
+.formContainer {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  .info {
+    .element {
+      .highlight {
+        color: var(--green);
+        font-weight: 600;
+      }
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  .image-box {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+  }
+  img {
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 5px;
+    margin: 30px 10px;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+.buttons {
+  margin: 30px 0;
+}

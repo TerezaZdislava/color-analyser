@@ -1,0 +1,9 @@
+@import './styles/variables.scss';
+
+.app {
+  text-align: center;
+}
+input::file-selector-button {
+  padding: 10px;
+  // background-color: aqua;
+}
